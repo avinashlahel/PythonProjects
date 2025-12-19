@@ -10,21 +10,20 @@ class RPS:
         self.validMoves = list(self.moves.keys())
 
     def play(self):
-            user_move = input('Enter you move (or exit): ').lower()
+        user_move = input('Enter you move (or exit): ').lower()
 
-            if user_move == 'exit':
-                print('Thanks for playing')
-                sys.exit()
+        if user_move == 'exit':
+            print('Thanks for playing')
+            sys.exit()
 
-            if user_move not in self.validMoves:
-                print('Invalid move, try again')
-                return self.play()
+        if user_move not in self.validMoves:
+            print('Invalid move, try again')
+            return self.play()
 
-            ai_move = choice(self.validMoves)
+        ai_move = choice(self.validMoves)
 
-            self.display(user_move, ai_move)
-            self.check(user_move, ai_move)
-
+        self.display(user_move, ai_move)
+        self.check(user_move, ai_move)
 
     def display(self, user_move: str, ai_move: str):
         print(f'You : {self.moves[user_move]}')
@@ -33,7 +32,11 @@ class RPS:
     def check(self, user_move: str, ai_move: str):
         if user_move == ai_move:
             print('Its a tie')
-        elif (user_move == 'rock' and ai_move == 'scissors') or (user_move == 'paper' and ai_move == 'rock') or  (user_move == 'scissors' and ai_move == 'paper'):
+        elif (
+                (user_move == 'rock' and ai_move == 'scissors')
+                or (user_move == 'paper' and ai_move == 'rock')
+                or (user_move == 'scissors' and ai_move == 'paper')
+        ):
             print('You win')
         else:
             print('AI wins')
